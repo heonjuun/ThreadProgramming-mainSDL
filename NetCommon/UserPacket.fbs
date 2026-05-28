@@ -1,0 +1,74 @@
+namespace UserPacket;
+
+struct FColor {
+	r : uint8;
+	g : uint8;
+	b : uint8;
+}
+
+struct FVector2D {
+	x : uint16;
+	y : uint16;
+}
+
+table C2S_Login {
+	user_id : string;
+	hash_key : string;
+}
+
+table S2C_Login {
+	client_socket_id : uint16;
+	message : string;
+}
+
+table S2C_Spawn {
+	client_socket_id : uint16;
+	position : FVector2D;
+	color : FColor;
+	shape : byte;
+}
+
+table S2C_Destroy {
+	client_socket_id : uint16;
+}
+
+table C2S_Move {
+	client_socket_id : uint16;
+	direction : byte;
+}
+
+table S2C_Move {
+	client_socket_id : uint16;
+	position : FVector2D;
+}
+
+table C2S_Chat {
+	client_socket_id : uint16;
+	user_id : string;
+	message : string;
+}
+
+table S2C_Chat {
+	client_socket_id : uint16;
+	user_id : string;
+	message : string;
+}
+
+
+
+union PacketType {
+	C2S_Login,
+	S2C_Login,
+	S2C_Spawn,
+	S2C_Destroy,
+	C2S_Move,
+	S2C_Move,
+	C2S_Chat,
+	S2C_Chat
+}
+
+table PacketData {
+	data : PacketType;
+}
+
+root_type PacketData;

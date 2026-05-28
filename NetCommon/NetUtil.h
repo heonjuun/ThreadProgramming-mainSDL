@@ -2,6 +2,8 @@
 
 #include "pch.h"
 
+
+
 #include "C2S_Login.h"
 #include "S2C_Login.h"
 #include "C2S_Move.h"
@@ -48,7 +50,11 @@ struct Header
 
 constexpr unsigned short HeaderSize = sizeof(Header);
 
-extern int RecvAll(SOCKET ReceiverSocket, char* OutData, int Size);
-extern int SendAll(SOCKET ReceiverSocket, const char* InData, int Size);
+
+extern int SendAll(SOCKET TargetSocket, const flatbuffers::FlatBufferBuilder& Builder);
+extern int RecvAll(SOCKET SourceSocket, char* OutData);
+
+//extern int RecvAll(SOCKET SourceSocket, char* OutData, int Size);
+extern int SendAll(SOCKET TargetSocket, const char* InData, int Size);
 
 extern void DisconnectSocket(SOCKET DisconnectedSocket, fd_set* Sockets);

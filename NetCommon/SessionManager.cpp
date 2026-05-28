@@ -37,12 +37,12 @@ Session* SessionManager::GetSession(int Index)
 	return &SessionList[Index];
 }
 
-Session* SessionManager::GetSession(const SOCKET& InClentSocket)
+Session* SessionManager::GetSession(const SOCKET& InClientSocket)
 {
 	// TODO: insert return statement here
 	for (auto Iter = SessionList.begin(); Iter != SessionList.end(); ++Iter)
 	{
-		if ((*Iter).ClientSocket == InClentSocket)
+		if ((*Iter).ClientSocket == InClientSocket)
 		{
 			return &(*Iter);
 		}

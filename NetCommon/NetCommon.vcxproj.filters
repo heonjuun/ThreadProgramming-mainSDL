@@ -92,5 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="UserPacket.fbs" />
   </ItemGroup>
 </Project>
